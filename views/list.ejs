@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>List</title>
+</head>
+<body>
+
+    <div class="box" id="heading">
+        <H1><%= listTitle%></H1>
+    </div>
+
+    <div class="box">
+
+        <!-- new for loop -->
+
+        <%  newlistitems.forEach(function(item){ %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input name="checkbox" type="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+                    <p> <%= item.name %> </p>
+                </div>
+                <input type="hidden" name="listName" value="<%=listTitle%>">
+            </form>
+        <%  }) %>
+
+
+
+        <!-- traditional for loop -->
+
+        <!-- <% for(var i = 0; i < newlistitems.length; i++){ %>
+        <div class="item">
+            <input type="checkbox">
+            <p> <%= newlistitems[i].name %> </p>
+        </div>
+        <% } %> -->
+        
+        <form action="/" class="item" method="post">
+            <input type="text" name="newitem" placeholder="New Item" autocomplete="off">
+            <button type="submit" name="listbutton" value=<%=listTitle%>>+</button>
+        </form>
+    </div>
+</body>
+</html>
